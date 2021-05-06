@@ -1,0 +1,32 @@
+<div class="container py-4">
+    <div class="bg-light rounded-3">
+        <div class="container-fluid py-5 banners">
+            <h1 class="display-3 fw-bold"><i class="fal fa-file-export" style="font-weight: 400; color: green;"></i>
+                Exportarr</h1>
+            <p>Use this tool to publish 'importable' lists from Radarr for others.</p>
+            <hr class="my-4">
+            <p>Others can copy one of the links below and add these as "custom stephen lu" lists in Radarr. Your lists are automatically updated daily.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row flex-wrap">
+                <h2>Radarr</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row ">
+                <ul>
+                    <li><a href="/radarr/?token=<%=token%>">All movies</a></li>
+                    <% radarr.forEach(function(genre) { %>
+                        <li><a href="/radarr/<%=genre%>?token=<%=token%>"><%=genre%></a></li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
+    </div>

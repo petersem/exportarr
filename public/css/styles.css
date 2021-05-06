@@ -1,0 +1,37 @@
+/* hide mouse cursor */
+
+
+body {
+  background-color: black;
+  color: #daa520;
+  text-align: left;
+}
+
+h1 {
+  white-space: nowrap;
+}
+
+.banners {
+  text-align: center;
+  color: black;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#warning {
+  background-color: red;
+}
+
+.alert-link:hover {
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+}
+
+a.alert-link {
+  height: 80vh;
+  color: #6c757d;
+  opacity: .5;
+}

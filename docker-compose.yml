@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  exportarr:
+    container_name: exportarr
+    image: exportarr
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+      TOKEN: "xyzzy"
+      RADARR_URL: "http://192.168.1.135:7878"
+      RADARR_TOKEN: ""
+    ports:
+      - 1234:3000

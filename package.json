@@ -1,0 +1,40 @@
+{
+  "name": "exportarr",
+  "version": "0.0.1",
+  "description": "Export radarr list as custom stephen lu format feeds, for import into other radarr apps",
+  "main": "index.js",
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "settings.json"
+    ],
+    "delay": "2500"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petersem/exportarr.git"
+  },
+  "author": "Matt Petersen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petersem/exportarr/issues"
+  },
+  "homepage": "https://github.com/petersem/exportarr#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "xml": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
