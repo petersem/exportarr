@@ -4,7 +4,7 @@ Export your Radarr list for others to import
 ```version: '3.4'
 services:
   exportarr:
-    container_name: exportarr
+    container_name: petersem/exportarr
     image: exportarr
     environment:
       NODE_ENV: production
