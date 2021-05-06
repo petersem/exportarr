@@ -1,16 +1,15 @@
 # exportarr
 Export your Radarr list for others to import
 
-version: '3.4'
-
+```version: '3.4'
 services:
   exportarr:
     container_name: exportarr
     image: exportarr
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
       TOKEN: "xyzzy"
       RADARR_URL: "http://x.x.x.x:7878"
       RADARR_TOKEN: "your-radarr-api-token"
     ports:
-      - 1234:3000
+      - 1234:3000```
