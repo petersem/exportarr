@@ -1,7 +1,8 @@
-#Exportarr
+# Exportarr
 Allows you to share your Radarr lists with others, without having to give them you Radarr API key.
 
-##Install
+## Install
+``` yaml
 version: '3.4'
 
 services:
@@ -18,6 +19,6 @@ services:
       RADARR_TOKEN: "yourexportarrtokenhere"
     ports:
       - 1234:3000
-
-#Run
+```
+# Run
 Open a browser and go to http://hostIP:port?token=yourexportarrtokenhere
