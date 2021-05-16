@@ -1,5 +1,5 @@
 # Exportarr
-Allows you to share your Radarr lists with others, without having to give them you Radarr API key.
+Allows you to share your Radarr lists with others, without having to give them your Radarr API key.
 
 ## Install
 ``` yaml
