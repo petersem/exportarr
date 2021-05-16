@@ -5,9 +5,9 @@ const app = express();
 const radarr = require("./classes/radarr");
 let movies = "";
 let distinctGenres = [];
-const radarrToken = process.env.RADARR_TOKEN;
-const radarrUrl = process.env.RADARR_URL; 
-const token = process.env.TOKEN || "xyzzy";
+const radarrToken = process.env.RADARR_TOKEN || "e3e5cdbef05a4808a219f20c1d869da6";
+const radarrUrl = process.env.RADARR_URL || "http://192.168.1.135:7878";
+const token = process.env.TOKEN || "matt";
 
 let movieClock;
 
