@@ -11,6 +11,6 @@ services:
       NODE_ENV: development
       TOKEN: "xyzzy"
       RADARR_URL: "http://192.168.1.135:7878"
-      RADARR_TOKEN: "yourtokenhere"
+      RADARR_TOKEN: "yourradarrtoken"
     ports:
       - 1234:3000
