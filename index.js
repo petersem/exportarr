@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/radarr", (req, res) => {
-    console.log(req.query.token);
+    //console.log(req.query.token);
     if(req.query.token !== token && token !== ""){
         res.sendStatus(401);
     }
