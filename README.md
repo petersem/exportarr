@@ -1,5 +1,6 @@
 # Exportarr
-Allows you to share your Radarr/Sonarr(beta) lists with others, without having to give them your Radarr API key, or open external ports to Radarr/Sonarr. :)
+Allows you to share your Radarr/Sonarr lists with others, without having to give them your Radarr API key, or open external ports to Radarr/Sonarr. :)
+ > Only the 'development' branch of Sonarr has the capability of importing the Sonar links
 
 ![image](https://github.com/petersem/exportarr/blob/master/public/images/exportarr.png?raw=true "Exportarr main screen")
 
@@ -15,8 +16,8 @@ services:
       RADARR_URL: "http://192.168.1.135:7878"
       RADARR_TOKEN: "yourradarrtokenhere"
       SONARR_URL: "http://192.168.1.135:8989"
-      SONARR_TOKEN: "yourradarrtokenhere"
-      SONARR_BETA: "false" # optional if reading from the development release of Sonarr
+      SONARR_TOKEN: "yoursonarrtokenhere"
+      SONARR_BETA: "false" # optional. Set to true if reading from the development release of Sonarr
     ports:
       - 1234:3000
 ```
