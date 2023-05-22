@@ -12,7 +12,7 @@ services:
       TOKEN: "xyzzy"
       RADARR_URL: "http://192.168.1.135:7878"
       RADARR_TOKEN: "yourradarrtoken"
-      SONARR_URL: "http://192.168.1.135:7878"
+      SONARR_URL: "http://192.168.1.135:8989"
       SONARR_TOKEN: "yoursonarrtoken"
       SONARR_BETA: "true"
     ports:
