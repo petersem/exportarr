@@ -16,7 +16,7 @@ services:
       RADARR_TOKEN: "yourradarrtokenhere"
       SONARR_URL: "http://192.168.1.135:8989"
       SONARR_TOKEN: "yourradarrtokenhere"
-      SONARR_BETA: false # optional if reading from the development release of Sonarr
+      SONARR_BETA: "false" # optional if reading from the development release of Sonarr
     ports:
       - 1234:3000
 ```
