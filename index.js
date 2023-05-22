@@ -3,13 +3,20 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const radarr = require("./classes/radarr");
+const sonarr = require("./classes/sonarr");
 let movies = "";
-let distinctGenres = [];
-const radarrToken = process.env.RADARR_TOKEN || "e3e5cdbef05a4808a219f20c1d869da6";
-const radarrUrl = process.env.RADARR_URL || "http://192.168.1.135:7878";
-const token = process.env.TOKEN || "matt";
+let shows = "";
+let distinctMovieGenres = [];
+let distinctShowGenres = [];
+const radarrToken = process.env.RADARR_TOKEN;
+const radarrUrl = process.env.RADARR_URL;
+const sonarrToken = process.env.SONARR_TOKEN;
+const sonarrUrl = process.env.SONARR_URL;
+const token = process.env.TOKEN || "";
+const sonarrBeta = process.env.SONARR_BETA || false
 
 let movieClock;
+let showClock;
 
 async function GetMovies(genre) {
     clearInterval(movieClock);
@@ -17,15 +24,42 @@ async function GetMovies(genre) {
     let rdr = new radarr(radarrUrl, radarrToken);
     movies = await rdr.GetMovies(genre);
     console.log(movies.length, "matching movies returned");
-    distinctGenres = await Promise.resolve(rdr.genreList.sort());
+    distinctMovieGenres = await Promise.resolve(rdr.genreList.sort());
     console.log('✅ Movie genre list created');
-    console.log('✅ Exportarr is ready for use!');
+    console.log('✅ Exportarr is ready for use for movies!');
     setInterval(GetMovies, 86400000); // daily run
     return await Promise.resolve(movies);
 }
 
+async function GetShows(genre) {
+    clearInterval(showClock);
+    console.log('✅ Starting process to get show data for lists');
+    let son = new sonarr(sonarrUrl, sonarrToken, sonarrBeta);
+    shows = await son.GetSeries(genre);
+    console.log(shows.length, "matching shows returned");
+    distinctShowGenres = await Promise.resolve(son.genreList.sort());
+    console.log('✅ Shows genre list created');
+    console.log('✅ Exportarr is ready for use for shows!');
+    setInterval(GetShows, 86400000); // daily run
+    return await Promise.resolve(shows);
+}
+
+
 // main call to get all movies
-GetMovies();
+if(radarrUrl != null && radarrToken != null){
+    GetMovies();
+}
+else{
+    console.log('Radarr not enabled')
+}
+
+// get shows
+if(sonarrUrl != null && sonarrToken != null){
+    GetShows();
+}
+else{
+    console.log('Sonarr not enabled')
+}
 
 //use ejs templating engine
 app.set("view engine", "ejs");
@@ -48,7 +82,7 @@ app.get("/", (req, res) => {
         res.sendStatus(401);
     }
     else{
-        res.render('index',{radarr: distinctGenres, token: token});
+        res.render('index',{radarr: distinctMovieGenres, sonarr: distinctShowGenres, token: token});
     }
 });
 
@@ -81,9 +115,23 @@ app.get("/sonarr", (req, res) => {
         res.sendStatus(401);
     }
     else{
-        res.render("radarr", { movies: rdr.GetMovies() }); // index refers to index.ejs
+        res.json(shows);
     }
   });
+
+  app.get("/sonarr/:genre", (req, res) => {
+    console.log(req.query.token);
+    if(req.query.token !== token && token !== ""){
+         res.sendStatus(401);
+    }
+    else{
+        const filteredShows = shows.filter(function(item){
+            return item.genres.includes(req.params.genre.toLowerCase()) == true;
+        });
+        res.json(filteredShows);
+    }
+});
+
 
 // start listening on port 3000
 app.listen(3000, () => {

@@ -1,5 +1,5 @@
 const axios = require("axios");
-const csl = require("./customStephenLu");
+const cl = require("./customList");
 
 /**
  * @desc Used to communicate with Radarr to obtain a list of future releases
@@ -7,9 +7,10 @@ const csl = require("./customStephenLu");
  * @param sonarrToken
  */
 class Sonarr {
-  constructor(sonrrUrl, sonarrToken) {
+  constructor(sonarrUrl, sonarrToken, sonarrBeta) {
     this.sonarrUrl = sonarrUrl;
     this.sonarrToken = sonarrToken;
+    this.sonarrBeta = sonarrBeta
     this.genreList = [];
   }
 
@@ -17,14 +18,18 @@ class Sonarr {
    * @desc Gets the show titles
    * @returns {Promise<object>} json results - results of search
    */
-  async GetTVRawData() {
+  async GetSeriesRawData() {
     let response;
     try {
+      let url = "/api/series?apikey="; 
+      if(this.sonarrBeta==true){
+        url = "/api/v3/series?apikey=";
+      }
       response = await axios
         .get(
-          this.radarrUrl +
-            "/api/series?apikey=" +
-            this.radarrToken
+          this.sonarrUrl +
+            url +
+          this.sonarrToken
         )
         .catch((err) => {
           throw err;
@@ -62,23 +67,21 @@ class Sonarr {
 
       await raw.data.reduce(async (memo, md) => {
         await memo;
-        let cslEntry;
+        let clEntry;
         //if(md.genres !== undefined){
           if(md.genres.filter(obj =>
             obj.toLowerCase().indexOf(genre.toLowerCase()) >= 0).length > 0){
-              cslEntry = new csl();
-              cslEntry.imdb_id = md.imdbId;
-              cslEntry.release_date = md.year;
-              cslEntry.tmdb_id = md.tvdbId;
-              cslEntry.title = md.title;
-              cslEntry.genres = md.genres.join().toLowerCase().replace(/\s/g, '');
-              let posterUrl = '';
-              if(md.images[0] !== undefined) {
-                posterUrl = md.images[0].remoteUrl;
-              }
-              cslEntry.poster_path = posterUrl;
+              clEntry = new cl();
+              clEntry.tmdb_id = md.tvdbId;
+              clEntry.title = md.title;
+              clEntry.genres = md.genres.join().toLowerCase().replace(/\s/g, '');
+              // let posterUrl = '';
+              // if(md.images[0] !== undefined) {
+              //   posterUrl = md.images[0].remoteUrl;
+              // }
+              // cslEntry.poster_path = posterUrl;
               
-              customList.push(cslEntry);
+              customList.push(clEntry);
           }
 
           // add to distinct genreList
@@ -97,4 +100,4 @@ class Sonarr {
   }
 }
 
-module.exports = Radarr;
+module.exports = Sonarr;

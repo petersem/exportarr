@@ -3,9 +3,11 @@
         <div class="container-fluid py-5 banners">
             <h1 class="display-3 fw-bold"><i class="fal fa-file-export" style="font-weight: 400; color: green;"></i>
                 Exportarr</h1>
-            <p>Use this tool to publish 'importable' lists from Radarr for others.</p>
+            <p>Use this tool to publish 'importable' lists from Radarr and Sonarr (beta) for others to import.</p>
             <hr class="my-4">
-            <p>Others can copy one of the links below and add these as "Custom Steven Lu" lists in Radarr. Your lists are automatically updated daily.</p>
+            <p>Copy Radarr links and add these as a "Custom Steven Lu" list in Radarr.</br>
+                Copy Sonarr links and add these as a "Custom List" in Sonar (Sonarr beta only)</p>
+            <p>Your lists are automatically updated daily.</p>
         </div>
     </div>
 
@@ -14,6 +16,12 @@
             <!-- method 1 - sizing classes -->
             <div class="list-group d-flex flex-row flex-wrap">
                 <h2>Radarr</h2>
+            </div>
+        </div>
+        <div class="col-6">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row flex-wrap">
+                <h2>Sonarr</h2>
             </div>
         </div>
     </div>
@@ -29,4 +37,18 @@
                 </ul>
             </div>
         </div>
+        <div class="col-6">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row ">
+                <ul>
+                    <li><a href="/sonarr/?token=<%=token%>">All shows</a></li>
+                    <% sonarr.forEach(function(genre) { %>
+                        <li><a href="/sonarr/<%=genre%>?token=<%=token%>"><%=genre%></a></li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
     </div>
+
+
+    <!-- [{ "tvdbId": "75837" }, { "tvdbId": "77847" }, { "tvdbId": "78299" }, { "tvdbId": "72756" } ] -->
