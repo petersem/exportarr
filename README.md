@@ -1,7 +1,12 @@
 # Exportarr
 Allows you to share your Radarr/Sonarr lists with others, without having to give them your Radarr API key, or open external ports to Radarr/Sonarr. :)
- > Only the 'development' branch of Sonarr has the capability of importing the Sonar links
+ > *Only the 'development' branch of Sonarr has the capability of importing the Sonar links*
 
+Possible uses 
+ - You dont want to publish trakt lists
+ - You know someone that wants to just copy your lists in Radarr/Sonarr for themselves. 
+ - You want to get updates from a trusted source for a specific genre of movies or shows. 
+ - You want to share your radarr/sonarrs lists, but dont want to open ports to these apps on your network, nor want to share API keys. 
 ![image](https://github.com/petersem/exportarr/blob/master/public/images/exportarr.png?raw=true "Exportarr main screen")
 
 ## Install
