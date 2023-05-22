@@ -9,7 +9,7 @@ Allows you to share your Radarr lists with others, without having to give them y
 services:
   exportarr:
     container_name: exportarr
-    image: exportarr
+    image: petersem/exportarr
     environment:
       TOKEN: "xyzzy" #[Optional] if you want to have a token to limit access to exportarr
       RADARR_URL: "http://192.168.1.135:7878"
