@@ -1,5 +1,5 @@
 # Exportarr
-Allows you to share your Radarr lists with others, without having to give them your Radarr API key, or open external ports to Radarr. :)
+Allows you to share your Radarr/Sonarr(beta) lists with others, without having to give them your Radarr API key, or open external ports to Radarr/Sonarr. :)
 
 ![image](https://github.com/petersem/exportarr/blob/master/public/images/exportarr.png?raw=true "Exportarr main screen")
 
