@@ -14,6 +14,6 @@ services:
       RADARR_TOKEN: "yourradarrtoken"
       SONARR_URL: "http://192.168.1.135:7878"
       SONARR_TOKEN: "yourradarrtoken"
-      SONARR_BETA: true
+      SONARR_BETA: "true"
     ports:
       - 1234:3000
