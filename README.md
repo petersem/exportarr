@@ -1,6 +1,5 @@
 # Exportarr
 Allows you to share your Radarr/Sonarr lists with others, without having to give them your Radarr API key, or open external ports to Radarr/Sonarr. :)
- > *Only the 'development' branch of Sonarr has the capability of importing the Sonar links*
 
 Possible uses 
  - You dont want to publish trakt lists
@@ -22,7 +21,6 @@ services:
       RADARR_TOKEN: "yourradarrtokenhere"
       SONARR_URL: "http://192.168.1.134:8989"
       SONARR_TOKEN: "yoursonarrtokenhere"
-      SONARR_BETA: "false" # optional. Set to true if reading from the development release of Sonarr
     ports:
       - 1234:3000
 ```
