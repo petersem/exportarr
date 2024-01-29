@@ -23,6 +23,7 @@ async function GetMovies(genre) {
     console.log('✅ Starting process to get movie data for lists');
     let rdr = new radarr(radarrUrl, radarrToken);
     movies = await rdr.GetMovies(genre);
+    //discreteMovieList = movies;
     console.log(movies.length, "matching movies returned");
     distinctMovieGenres = await Promise.resolve(rdr.genreList.sort());
     console.log('✅ Movie genre list created');
@@ -82,7 +83,7 @@ app.get("/", (req, res) => {
         res.sendStatus(401);
     }
     else{
-        res.render('index',{radarr: distinctMovieGenres, sonarr: distinctShowGenres, token: token});
+        res.render('index',{radarr: distinctMovieGenres, sonarr: distinctShowGenres, token: token, movies: movies, shows: shows});
     }
 });
 

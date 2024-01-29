@@ -35,3 +35,7 @@ a.alert-link {
   color: #6c757d;
   opacity: .5;
 }
+
+li.title {
+  color: rgb(140, 143, 143);
+}

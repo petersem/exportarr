@@ -1,3 +1,4 @@
+
 <div class="container py-4">
     <div class="bg-light rounded-3">
         <div class="container-fluid py-5 banners">
@@ -48,7 +49,37 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="col-12">
+            <h2>Full list of titles (for reference)</h2>
+            <button class="ws-btn w3-block" onclick="showElement()">Show</button>
+            <button class="ws-btn w3-block" onclick="hideElement()">Hide</button>
+        </div>
+
+        <div class="col-6" id="full-list1" style="display: none;">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row ">
+                <ul>
+                    <% movies.forEach(function(movie) { %>
+                        <li class="title"><%=movie.title%> - (<%=movie.genres%>)</a></li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-6" id="full-list2" style="display: none;">
+            <!-- method 1 - sizing classes -->
+            <div class="list-group d-flex flex-row ">
+                <ul>
+                    <% shows.forEach(function(show) { %>
+                        <li class="title"><%=show.title%> - (<%=show.genres%>)</a></li>
+                    <%});%>
+                </ul>
+            </div>
+        </div>
+
     </div>
 
+    
 
     <!-- [{ "tvdbId": "75837" }, { "tvdbId": "77847" }, { "tvdbId": "78299" }, { "tvdbId": "72756" } ] -->
