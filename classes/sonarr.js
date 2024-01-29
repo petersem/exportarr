@@ -7,10 +7,9 @@ const cl = require("./customList");
  * @param sonarrToken
  */
 class Sonarr {
-  constructor(sonarrUrl, sonarrToken, sonarrBeta) {
+  constructor(sonarrUrl, sonarrToken) {
     this.sonarrUrl = sonarrUrl;
     this.sonarrToken = sonarrToken;
-    this.sonarrBeta = sonarrBeta
     this.genreList = [];
   }
 
@@ -21,10 +20,7 @@ class Sonarr {
   async GetSeriesRawData() {
     let response;
     try {
-      let url = "/api/series?apikey="; 
-      if(this.sonarrBeta==true){
-        url = "/api/v3/series?apikey=";
-      }
+      let url = "/api/v3/series?apikey="; 
       response = await axios
         .get(
           this.sonarrUrl +

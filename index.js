@@ -13,7 +13,7 @@ const radarrUrl = process.env.RADARR_URL;
 const sonarrToken = process.env.SONARR_TOKEN;
 const sonarrUrl = process.env.SONARR_URL;
 const token = process.env.TOKEN || "";
-const sonarrBeta = process.env.SONARR_BETA || false
+
 
 let movieClock;
 let showClock;
@@ -34,7 +34,7 @@ async function GetMovies(genre) {
 async function GetShows(genre) {
     clearInterval(showClock);
     console.log('✅ Starting process to get show data for lists');
-    let son = new sonarr(sonarrUrl, sonarrToken, sonarrBeta);
+    let son = new sonarr(sonarrUrl, sonarrToken);
     shows = await son.GetSeries(genre);
     console.log(shows.length, "matching shows returned");
     distinctShowGenres = await Promise.resolve(son.genreList.sort());

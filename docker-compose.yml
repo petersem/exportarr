@@ -10,10 +10,9 @@ services:
     environment:
       NODE_ENV: development
       TOKEN: "xyzzy"
-      RADARR_URL: "http://192.168.1.135:7878"
-      RADARR_TOKEN: "yourradarrtoken"
-      SONARR_URL: "http://192.168.1.135:8989"
-      SONARR_TOKEN: "yoursonarrtoken"
-      SONARR_BETA: "true"
+      RADARR_URL: "http://radarrhost:7878"
+      RADARR_TOKEN: "your radarr token"
+      SONARR_URL: "http://sonarrhost:8989"
+      SONARR_TOKEN: "your sonarr token"
     ports:
       - 1234:3000

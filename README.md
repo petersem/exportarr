@@ -18,9 +18,9 @@ services:
     image: petersem/exportarr
     environment:
       TOKEN: "xyzzy" #[Optional] if you want to have a token to limit access to exportarr
-      RADARR_URL: "http://192.168.1.135:7878"
+      RADARR_URL: "http://192.168.1.134:7878"
       RADARR_TOKEN: "yourradarrtokenhere"
-      SONARR_URL: "http://192.168.1.135:8989"
+      SONARR_URL: "http://192.168.1.134:8989"
       SONARR_TOKEN: "yoursonarrtokenhere"
       SONARR_BETA: "false" # optional. Set to true if reading from the development release of Sonarr
     ports:
