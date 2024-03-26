@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const radarr = require("./classes/radarr");
 const sonarr = require("./classes/sonarr");
+const pjson = require("./package.json");
 let movies = "";
 let shows = "";
 let distinctMovieGenres = [];
@@ -13,7 +14,16 @@ const radarrUrl = process.env.RADARR_URL;
 const sonarrToken = process.env.SONARR_TOKEN;
 const sonarrUrl = process.env.SONARR_URL;
 const token = process.env.TOKEN || "";
+let radarrEnabled = true;
+let sonarrEnabled = true;
 
+
+console.log(`******************************`);
+console.log(` Exportarr - By Matt Petersen`);
+console.log(` Brisbane, Australia         `);
+console.log(` Version: ` + pjson.version );
+console.log(`******************************`);
+console.log(` `);
 
 let movieClock;
 let showClock;
@@ -51,7 +61,8 @@ if(radarrUrl != null && radarrToken != null){
     GetMovies();
 }
 else{
-    console.log('Radarr not enabled')
+    console.log('* Radarr not enabled')
+    radarrEnabled = false;
 }
 
 // get shows
@@ -59,7 +70,8 @@ if(sonarrUrl != null && sonarrToken != null){
     GetShows();
 }
 else{
-    console.log('Sonarr not enabled')
+    console.log('* Sonarr not enabled')
+    radarrEnabled = false;
 }
 
 //use ejs templating engine
@@ -79,11 +91,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // set routes
 app.get("/", (req, res) => {
-    if(req.query.token !== token && token !== ""){
-        res.sendStatus(401);
+    if(sonarrEnabled && radarrEnabled){
+        if(req.query.token !== token && token !== ""){
+            res.sendStatus(401);
+        }
+        else{
+            res.render('index',{radarr: distinctMovieGenres, sonarr: distinctShowGenres, token: token, movies: movies, shows: shows});
+        }
     }
     else{
-        res.render('index',{radarr: distinctMovieGenres, sonarr: distinctShowGenres, token: token, movies: movies, shows: shows});
+        res.writeHead(200);
+        res.end("** SONARR and/or RADARR not configured in environment variables - cannot start Exportarr");
+        console.log(" ");
+        console.log("** SONARR and/or RADARR not configured in environment variables - cannot start Exportarr");
     }
 });
 
@@ -98,7 +118,7 @@ app.get("/radarr", (req, res) => {
 });
 
 app.get("/radarr/:genre", (req, res) => {
-    console.log(req.query.token);
+    //console.log("selected movie genre: " + req.params.genre.toLowerCase());
     if(req.query.token !== token && token !== ""){
          res.sendStatus(401);
     }
@@ -121,7 +141,7 @@ app.get("/sonarr", (req, res) => {
   });
 
   app.get("/sonarr/:genre", (req, res) => {
-    console.log(req.query.token);
+    //console.log("selected show genre: " + req.params.genre.toLowerCase());
     if(req.query.token !== token && token !== ""){
          res.sendStatus(401);
     }
@@ -137,4 +157,4 @@ app.get("/sonarr", (req, res) => {
 // start listening on port 3000
 app.listen(3000, () => {
     console.log(`✅ Web server started on internal port 3000 `);
-  });
+});

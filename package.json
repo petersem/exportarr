@@ -1,6 +1,6 @@
 {
   "name": "exportarr",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Export radarr list as custom stephen lu format feeds, for import into other radarr apps",
   "main": "index.js",
   "nodemonConfig": {
