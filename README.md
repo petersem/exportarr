@@ -29,5 +29,5 @@ services:
  - Open a port for exportarr or set it up in your reverse proxy
  - Open radarr - settings - lists - '+' - 'StevenLu Custom', then change the title and paste in the url from the exportarr list you want to use. 
 ![image](https://github.com/petersem/exportarr/blob/master/public/images/exportarrCSL.png?raw=true "Radarr Steven Lu custom list")
- - Open sonarr (develop branch) - settings - lists - '+' - 'Custom List', then change the title and paste in the url from the exportarr list you want to use. 
+ - Open sonarr - settings - lists - '+' - 'Custom List', then change the title and paste in the url from the exportarr list you want to use. 
  ![image](https://github.com/petersem/exportarr/blob/master/public/images/exportarrCL.png?raw=true "Sonarr Custom list")
